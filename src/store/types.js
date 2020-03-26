@@ -1,0 +1,13 @@
+export const login = 'LOGIN';
+export const logout = 'LOGOUT';
+export const registerUser = 'REGISTERUSER';
+export const listUsers = 'LISTUSERS';
+export const listPosts = 'LISTPOSTS';
+export const listLikes = 'LISTLIKES';
+export const fetchUser = 'FETCHUSER';
+export const likePost = 'LIKEPOST';  // remove
+export const followUser = 'FOLLOWUSER'; // remove
+export const listFollowing = 'LISTFOLLOWING';
+export const retrieveLoggedUserInfo = 'RETRIEVELOGGEDUSERINFO';
+export const fetchUserPosts = 'FETCHUSERPOSTS';
+export const fetchPost = 'FETCHPOST';
