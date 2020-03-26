@@ -12,9 +12,9 @@ RUN chmod +x ./scripts*
 RUN mkdir -p /frontend
 RUN mkdir -p /frontend_tmp
 
-WORKDIR frontend_tmp
 
 COPY package.json /frontend_tmp/
 RUN npm install
 COPY . /frontend_tmp
+WORKDIR frontend_tmp
 RUN npm run build
