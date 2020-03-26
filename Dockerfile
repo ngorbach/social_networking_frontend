@@ -11,7 +11,7 @@ RUN mkdir -p /frontend_tmp
 
 WORKDIR frontend_tmp
 
-COPY ./frontend/package.json /frontend_tmp/
+COPY package.json /frontend_tmp/
 RUN npm install
-COPY ./frontend /frontend_tmp
+COPY . /frontend_tmp
 RUN npm run build
