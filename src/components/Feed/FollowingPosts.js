@@ -5,13 +5,17 @@ import SearchBar from './SearchBar'
 import LikePost from './LikePost'
 import { Span } from "../../styles/likes"
 import { listPostsFunction } from "../../store/actions/listPostsAction";
-import { PostsContainer, OwnPostContainer, LikesContainer, PostContainer, FeedContainer, SearchContainer } from '../../styles/containers'
+import { FeedContainer } from '../../styles/containers'
+import { SearchContainer } from '../../styles/containers'
+import { PostsContainer, OwnPostContainer, LikesContainer } from '../../styles/containers'
+import { PostContainer } from '../../styles/containers'
 
 import ChangePost from './ChangePost'
 import DeletePost from './DeletePost'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faThLarge, faUserFriends, faBell, faUserCircle, faEllipsisV, faPowerOff, faSearch, faThumbsUp, faLessThanEqual} from '@fortawesome/free-solid-svg-icons'
-import { Ul,Li,Dropdown,DropdownContent } from '../../styles/dropdown'
+import { Ul,Li } from '../../styles/dropdown'
+import {Dropdown,DropdownContent} from '../../styles/dropdown'
 import { fetchPostFunction } from "../../store/actions/fetchPostAction";
 
 
@@ -135,7 +139,8 @@ const Post = (props) => {
           { props.ownPost ? undefined : <PostDropDown post_id={props.post_id} dispatch={props.dispatch}/>}
       </div>
       <p style={{paddingBottom:'20px',paddingTop:'20px',textAlign:'justify',overflow:'hidden',textOverflow:'ellipsis'}}>{props.text}</p>
-      { props.imgs.map( img => <img src={img.image} alt='Image could not be displayed' width='10%'/>) }<br/>
+      {/* { props.imgs.map( img => <img src={img.image} alt='Image could not be displayed' width='10%'/>) } */}
+      <br/>
       <div style={{width:'100%',display:'flex',justifyContent:'space-between'}}>
           <div style={{width:'50%',display:'flex',justifyContent:'space-between'}}>
               <LikesContainer onClick={likePostHandler} style={{width:'60px',display:'flex',justifyContent:'space-between'}}>

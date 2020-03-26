@@ -3,14 +3,13 @@ import {connect} from 'react-redux';
 
 export default function HOCWrapper(WrappedComponent) {
     function AuthComponent(props) {
-
         useEffect(() => {
+            console.log('HOC',props)
             redirectUser()
         }, [props.token]);
 
         const redirectUser = () => {
-            console.log('HOC',props)
-            if (!props.token) {
+            if ( !props.token ) {
                 props.history.push('/')
             } else {
                 props.history.push('/feed/')

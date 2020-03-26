@@ -2,15 +2,15 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Button } from "../../styles/buttons"
 import { listPostsFunction } from "../../store/actions/listPostsAction";
-import { fetchPostFunction } from "../../store/actions/fetchPostAction";
 import { Ul,Li } from '../../styles/dropdown'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit } from '@fortawesome/free-solid-svg-icons'
+import { fetchPostFunction } from "../../store/actions/fetchPostAction";
 
 
 const ChangePost = (props) => {
 
-    const changePostHandler = (e) => {
+    const commentPostHandler = (e) => {
         e.preventDefault();
         const URL = `https://motion.propulsion-home.ch/backend/api/social/posts/${props.post_id}/`;
         const headers = new Headers({
@@ -32,7 +32,7 @@ const ChangePost = (props) => {
             console.error('Error:', error);
             })
         }
-    return <Li onClick={changePostHandler}><FontAwesomeIcon icon={faEdit} height='90px' color='rgb(200,200,200)' style={{marginRight:'8px'}}/>change</Li>
+    return <Li onClick={commentPostHandler}><FontAwesomeIcon icon={faEdit} height='90px' color='rgb(200,200,200)' style={{marginRight:'8px'}}/>change</Li>
 }
 
 

@@ -1,11 +1,12 @@
 import {listPosts} from "../types";
+import { HOST_URL } from "../../constants.js"
 
 export const listPostsAction = posts => ({
     type: listPosts,
     payload: posts
 });
 
-const URL = `https://motion.propulsion-home.ch/backend/api/social/posts/`;
+const URL = `${HOST_URL}backend/api/social/posts/`;
 
 export const listPostsFunction = () => dispatch => {
 

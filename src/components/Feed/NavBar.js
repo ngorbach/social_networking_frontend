@@ -6,7 +6,7 @@ import { listUsersFunction } from "../../store/actions/listUsersAction";
 import { listFollowingFunction } from "../../store/actions/listFollowingAction";
 import { listPostsFunction } from "../../store/actions/listPostsAction";
 import { listLikesFunction } from "../../store/actions/listLikesAction";
-import { logoutHandler } from "../../store/actions/logoutAction";
+import { logoutFunction } from "../../store/actions/logoutAction";
 import { NavBarFeed, NavBarLeft, NavBarLogo, NavBarSubLogo, NavBarRight } from '../../styles/feed'
 import {Dropdown,DropdownContent,Ul,Li } from '../../styles/dropdown'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -36,6 +36,12 @@ align-items:center;
 `;
 
 const NavBar = (props) => {
+
+    const logoutHandler = () => {
+        console.log('in da logout handler')
+        props.dispatch(logoutFunction())
+        props.history.push('/')
+    };
 
     const listUsersHandler = (e) => {
         e.preventDefault();

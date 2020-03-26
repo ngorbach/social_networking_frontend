@@ -1,8 +1,11 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import SignMiddle from '../Login/SignMiddle.js'
-import { LoginLayout,RightPanel,SigninContainer,SigninButton } from '../../styles/sign_in_up'
+import { LoginLayout } from '../../styles/sign_in_up'
+import { RightPanel } from '../../styles/sign_in_up'
 import LeftPanelComponent from '../LeftPanel/LeftPanelComponent'
+import { SigninContainer } from '../../styles/sign_in_up'
+import { SigninButton } from '../../styles/sign_in_up'
 
 
 const SignUpNotification = (props) => {

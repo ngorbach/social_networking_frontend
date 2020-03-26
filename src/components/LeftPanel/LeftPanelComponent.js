@@ -1,5 +1,13 @@
 import React from "react";
-import { LeftPanel, LogoContainer, LeftTitle, LeftSubtitle, AppStoreContainer, AppStoreBox, SocialMediaContainer, LicenseStatement, SocialMediaIcon } from '../../styles/sign_in_up'
+import { LeftPanel } from '../../styles/sign_in_up'
+import { LogoContainer } from "../../styles/sign_in_up";
+import { LeftTitle } from "../../styles/sign_in_up";
+import { LeftSubtitle } from "../../styles/sign_in_up";
+import { AppStoreContainer } from "../../styles/sign_in_up";
+import { AppStoreBox } from "../../styles/sign_in_up";
+import { SocialMediaContainer } from "../../styles/sign_in_up";
+import { LicenseStatement } from "../../styles/sign_in_up";
+import { SocialMediaIcon } from "../../styles/sign_in_up";
 import "font-awesome/css/font-awesome.min.css";
 
 const LeftPanelComponent = () => {

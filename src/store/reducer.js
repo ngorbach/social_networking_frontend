@@ -1,4 +1,7 @@
-import { login, logout, listUsers, listLikes, listPosts, fetchUser, likePost, listFollowing, registerUser, retrieveLoggedUserInfo, fetchUserPosts, fetchPost } from "./types";
+import { login, logout, listUsers, listLikes, listPosts,
+    fetchUser, likePost, listFollowing, registerUser, 
+    retrieveLoggedUserInfo, fetchUserPosts, fetchPost } from "./types";
+
 
 const initialState = {
     token: null,
@@ -18,15 +21,15 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
     if (action.type === login) {
-            console.log('L',action.payload.user)
+            console.log('in da login reducer',state)
             return {
                 ...state,
-                token: action.payload.access,
+                token: action.payload,
                 userAuth: true,
-                loggedUserInfo: action.payload.user
+                //loggedUserInfo: action.payload.user
             }
         }
-    else if (action.type === logout ) {
+    else if (action.type === logout) {
         console.log('in da logout reducer')
             return {
                 ...state,
@@ -43,7 +46,7 @@ const reducer = (state = initialState, action) => {
             }
         }
     else if (action.type === listLikes) {
-            console.log('in da list users reducer',action.payload)
+            console.log('in da list likes reducer',action.payload)
                 return {
                     ...state,
                     likes: action.payload
@@ -90,7 +93,7 @@ const reducer = (state = initialState, action) => {
                 }
             }
     else if (action.type === retrieveLoggedUserInfo) {
-                console.log('in da own user reducer',action.payload)
+                console.log('in da retrieveLoggedUserInfo reducer',action.payload)
                     return {
                     ...state,
                     loggedUserInfo: action.payload

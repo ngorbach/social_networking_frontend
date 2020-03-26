@@ -5,7 +5,10 @@ import SearchBar from './SearchBar'
 import LikePost from './LikePost'
 import { Span } from "../../styles/likes"
 import { listPostsFunction } from "../../store/actions/listPostsAction";
-import { FeedContainer, SearchContainer, PostsContainer, OwnPostContainer, LikesContainer, PostContainer } from '../../styles/containers'
+import { FeedContainer } from '../../styles/containers'
+import { SearchContainer } from '../../styles/containers'
+import { PostsContainer, OwnPostContainer, LikesContainer } from '../../styles/containers'
+import { PostContainer } from '../../styles/containers'
 
 import ChangePost from './ChangePost'
 import DeletePost from './DeletePost'

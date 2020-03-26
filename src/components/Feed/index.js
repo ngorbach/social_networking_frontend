@@ -4,26 +4,30 @@ import NavBar from './NavBar'
 import LikePost from './LikePost'
 import ChangePost from './ChangePost'
 import DeletePost from './DeletePost'
-import { Button, SendButton } from "../../styles/buttons"
+import { Button } from "../../styles/buttons"
+import { SendButton } from "../../styles/buttons"
 import { BaseInput } from '../../styles/inputs'
 import { listPostsFunction } from "../../store/actions/listPostsAction";
 import { listFollowingFunction } from "../../store/actions/listFollowingAction";
 import { listUsersFunction } from "../../store/actions/listUsersAction";
-import { listLikesFunction } from "../../store/actions/listLikesAction";
-import { fetchPostFunction } from "../../store/actions/fetchPostAction";
 import { retrieveLoggedUserInfoFunction } from "../../store/actions/retrieveLoggedUserInfoAction";
-import { FeedContainer, PostsContainer, PostContainer,OwnPostContainer, LikesContainer, PostText } from '../../styles/containers'
+import { FeedContainer, PostsContainer, PostContainer,OwnPostContainer, LikesContainer } from '../../styles/containers'
+import { PostText } from '../../styles/containers'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faThLarge, faUserFriends, faBell, faUserCircle, faEllipsisV, faPowerOff, faSearch, faThumbsUp, faLessThanEqual} from '@fortawesome/free-solid-svg-icons'
 import SearchBar from './SearchBar'
-import { Ul,Li,Dropdown,DropdownContent } from '../../styles/dropdown'
+import { Ul,Li } from '../../styles/dropdown'
+import { listLikesFunction } from "../../store/actions/listLikesAction";
+import { fetchPostFunction } from "../../store/actions/fetchPostAction";
+import {Dropdown,DropdownContent} from '../../styles/dropdown'
+import { HOST_URL } from "../../constants.js"
 
 
 const PostDropDown = props => {
 
     const changePostHandler = (e) => {
         e.preventDefault();
-        const URL = `https://motion.propulsion-home.ch/backend/api/social/posts/${props.post_id}/`;
+        const URL = `${HOST_URL}backend/api/social/posts/${props.post_id}/`;
         const headers = new Headers({
             'Content-Type': 'application/json',
             "Authorization": "Bearer " + localStorage.token
@@ -47,7 +51,7 @@ const PostDropDown = props => {
     const deletePostHandler = (e) => {
         console.log('delete')
         e.preventDefault();
-        const URL = `https://motion.propulsion-home.ch/backend/api/social/posts/${props.post_id}/`;
+        const URL = `${HOST_URL}backend/api/social/posts/${props.post_id}/`;
         const headers = new Headers({
             'Content-Type': 'application/json',
             "Authorization": "Bearer " + localStorage.token
@@ -95,7 +99,7 @@ const Post = (props) => {
 
     const likePostHandler = (e) => {
         e.preventDefault();
-        const URL = `https://motion.propulsion-home.ch/backend/api/social/posts/toggle-like/${props.post_id}/`;
+        const URL = `${HOST_URL}backend/api/social/posts/toggle-like/${props.post_id}/`;
         const headers = new Headers({
             'Content-Type': 'application/json',
             "Authorization": "Bearer " + localStorage.token
@@ -141,7 +145,8 @@ const Post = (props) => {
             { props.ownPost ? undefined : <PostDropDown post_id={props.post_id} dispatch={props.dispatch}/>}
         </div>
         <p style={{paddingBottom:'20px',paddingTop:'20px',textAlign:'justify',overflow:'hidden',textOverflow:'ellipsis'}}>{props.text}</p>
-        { props.imgs.map( img => <img src={img.image} alt='Image could not be displayed' width='10%'/>) }<br/>
+        {/* { props.imgs.map( img => <img src={img.image} alt='Image could not be displayed' width='10%'/>) } */}
+        <br/>
         <div style={{width:'100%',display:'flex',justifyContent:'space-between'}}>
             <div style={{width:'50%',display:'flex',justifyContent:'space-between'}}>
                 <LikesContainer onClick={likePostHandler} style={{width:'60px',display:'flex',justifyContent:'space-between'}}>
@@ -171,19 +176,22 @@ const Feed = (props) => {
     const [ownUserId, setOwnUserId] = useState(null);
 
 
+
+
     const makePostHandler = () => {
-        const URL = `https://motion.propulsion-home.ch/backend/api/social/posts/`;
+        const URL = `${HOST_URL}backend/api/social/posts/`;
         const headers = new Headers({
             'Content-Type': 'application/json',
             "Authorization": "Bearer " + localStorage.token
         });
-        const config = { method:'POST',body: JSON.stringify({content:post}),headers};
+        const config = { method:'POST',body: JSON.stringify({content:post,title:'title'}),headers};
         const apiInformation = fetch(URL, config)
             .then( response  => response.json())
             .then( result  => {
             console.log('Success:', result);
-            props.dispatch(fetchPostFunction(result.id));
+            //props.dispatch(fetchPostFunction(result.id));
             props.dispatch(listPostsFunction());
+            props.react_posts.push(result)
             })
             .catch((error) => {
             console.error('Error:', error);
@@ -202,9 +210,10 @@ const Feed = (props) => {
             <OwnPostContainer>
             <img src='../assets/images/users/jennifer.png' height='50px' /><input value={post} type='text' placeholder={`What's on your mind${props.react_loggedUserInfo === undefined ? '' : `, ${props.react_loggedUserInfo.first_name}`}?`} style={{border:'none',width:'65%',paddingLeft:'20px'}} onChange={ (e) => setPost(e.currentTarget.value) } /><SendButton onClick={makePostHandler}><img src='../assets/images/send_button.png' height='20px'/></SendButton>
             </OwnPostContainer>
+            {/* { props.react_posts.map( post => console.log('AVATAR',post) ) } */}
                 {
                     props.react_posts.map( (post,index) => {
-                        return <Post key={index} avatar={post.user.avatar} text={post.content} name={ `${post.user.first_name} ${post.user.last_name}` } post_id={post.id} liked_post={post.logged_in_user_liked} imgs={post.images} amount_of_likes={post.amount_of_likes} created={post.created} dispatch={props.dispatch} ownPost={post.user.logged_in_user_is_following}/>
+                        return <Post key={index} avatar={null} text={post.content} name={ `${post.user.first_name} ${post.user.last_name}` } post_id={post.id} liked_post={post.logged_in_user_liked} imgs={post.images} amount_of_likes={post.amount_of_likes} created={post.created} dispatch={props.dispatch} ownPost={post.user.logged_in_user_is_following}/>
                         }) 
                 }
             </PostsContainer>

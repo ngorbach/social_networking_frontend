@@ -37,7 +37,7 @@ return <SearchContainer>
     <SearchSubSubContainer>
         { props.history.location.pathname === '/liked/' ? <SearchTextActive onClick={likedPostsHandler}>Liked</SearchTextActive> : <SearchText onClick={likedPostsHandler}>Liked</SearchText> }
         { props.history.location.pathname === '/friends/' ? <SearchTextActive onClick={friendsPostsHandler}>Friends</SearchTextActive> : <SearchText onClick={friendsPostsHandler}>Friends</SearchText> }
-        { props.history.location.pathname === '/following/' ? <SearchTextActive onClick={followingPostsHandler}>Following</SearchTextActive> : <SearchText onClick={followingPostsHandler}>Folowing</SearchText> }
+        { props.history.location.pathname === '/following/' ? <SearchTextActive onClick={followingPostsHandler}>Following</SearchTextActive> : <SearchText onClick={followingPostsHandler}>Following</SearchText> }
     </SearchSubSubContainer>
 </SearchSubContainer>
 </SearchContainer>

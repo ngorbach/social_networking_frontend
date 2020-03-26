@@ -2,10 +2,10 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Button } from "../../styles/buttons"
 import { listPostsFunction } from "../../store/actions/listPostsAction";
-import { fetchPostFunction } from "../../store/actions/fetchPostAction";
 import { Ul,Li } from '../../styles/dropdown'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
+import { fetchPostFunction } from "../../store/actions/fetchPostAction";
 
 
 const DeletePost = (props) => {

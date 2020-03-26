@@ -5,7 +5,8 @@ import NavBar from '../Feed/NavBar';
 import ShowUser from './ShowUser'
 import { listUsersFunction } from "../../store/actions/listUsersAction";
 import { listFollowingFunction } from "../../store/actions/listFollowingAction";
-import { FeedContainer,PostsContainer } from '../../styles/containers'
+import { FeedContainer } from '../../styles/containers'
+import { PostsContainer } from '../../styles/containers'
 import SearchBar from '../Feed/SearchBar'
 
 const Users = (props) => {
@@ -22,7 +23,7 @@ const Users = (props) => {
     props.react_users.map( (user,index) => {
         // return <PostContainer key={index}><ShowUser user={user} history={props.history}/><br/><FollowUser user_id={user.id} following={props.logged_in_user_is_following} /></PostContainer>
         return <>
-          {user.first_name ? <ShowUser key={index} user={user} history={props.history} style={{flexDirection:'column',justifyContent:'center'}}/> : '' }
+          {user.first_name ? <ShowUser key={index} user={user} history={props.history} style={{flexDirection:'column',justifyContent:'center'}}/> : '' }
           </>
     }) 
     }

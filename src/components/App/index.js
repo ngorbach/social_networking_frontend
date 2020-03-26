@@ -15,6 +15,8 @@ import {loginAction} from "../../store/actions/loginAction";
 import User from '../User/index.js'
 
 const token = localStorage.getItem('token');
+const user = localStorage.getItem('user');
+console.log('App',token)
 if (token) {
   store.dispatch(loginAction(token))
 }
@@ -22,7 +24,7 @@ if (token) {
 
 function App() {
   return (
-    <Router basename={process.env.PUBLIC_URL}>
+    <Router>
       <Switch>
         <Route exact path="/" component={ HOCWrapper(Login) }/> 
         <Route exact path="/feed" component={ HOCWrapper(Feed) }/>

@@ -2,27 +2,26 @@ import React, {useState} from 'react';
 import {connect} from 'react-redux';
 import SignTop from './SignTop.js'
 import SignMiddle from './SignMiddle.js'
-import { LoginLayout, RightPanel } from '../../styles/sign_in_up'
+import { LoginLayout, RightPanel, SigninButton, SigninContainer } from '../../styles/sign_in_up'
 import { BaseInput } from '../../styles/inputs'
 import { loginFunction } from "../../store/actions/loginAction";
-import { SigninButton, SigninContainer } from '../../styles/sign_in_up'
 import LeftPanelComponent from './LeftPanelComponent'
 
 
 const Login = (props) => {
 
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-
+    const [email, setEmail] = useState('nico@email.com');
+    const [password, setPassword] = useState('propulsion');
+    
     const userLoginHandler = (e) => {
         e.preventDefault();
         const data = {
             email,
             password
         };
+        console.log('in da login handler',data)
         props.dispatch(loginFunction(data))
     };
-
 
     return <LoginLayout>
         <LeftPanelComponent />

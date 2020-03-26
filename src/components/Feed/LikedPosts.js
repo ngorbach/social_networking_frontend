@@ -6,7 +6,10 @@ import LikePost from './LikePost'
 import { Span } from "../../styles/likes"
 import { listPostsFunction } from "../../store/actions/listPostsAction";
 import { fetchPostFunction } from "../../store/actions/fetchPostAction";
-import { PostsContainer, OwnPostContainer, LikesContainer, PostContainer, SearchContainer, FeedContainer } from '../../styles/containers'
+import { FeedContainer } from '../../styles/containers'
+import { SearchContainer } from '../../styles/containers'
+import { PostsContainer, OwnPostContainer, LikesContainer } from '../../styles/containers'
+import { PostContainer } from '../../styles/containers'
 
 import ChangePost from './ChangePost'
 import DeletePost from './DeletePost'
@@ -14,6 +17,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faThLarge, faUserFriends, faBell, faUserCircle, faEllipsisV, faPowerOff, faSearch, faThumbsUp, faLessThanEqual} from '@fortawesome/free-solid-svg-icons'
 import { Ul,Li } from '../../styles/dropdown'
 import {Dropdown,DropdownContent} from '../../styles/dropdown'
+import { HOST_URL } from "../../constants.js"
 
 
 
@@ -93,7 +97,7 @@ const Post = (props) => {
 
   const likePostHandler = (e) => {
       e.preventDefault();
-      const URL = `https://motion.propulsion-home.ch/backend/api/social/posts/toggle-like/${props.post_id}/`;
+      const URL = `${HOST_URL}backend/api/social/posts/toggle-like/${props.post_id}/`;
       const headers = new Headers({
           'Content-Type': 'application/json',
           "Authorization": "Bearer " + localStorage.token
@@ -136,7 +140,8 @@ const Post = (props) => {
           { props.ownPost ? undefined : <PostDropDown post_id={props.post_id} dispatch={props.dispatch}/>}
       </div>
       <p style={{paddingBottom:'20px',paddingTop:'20px',textAlign:'justify',overflow:'hidden',textOverflow:'ellipsis'}}>{props.text}</p>
-      { props.imgs.map( img => <img src={img.image} alt='Image could not be displayed' width='10%'/>) }<br/>
+      {/* { props.imgs.map( img => <img src={img.image} alt='Image could not be displayed' width='10%'/>) } */}
+      <br/>
       <div style={{width:'100%',display:'flex',justifyContent:'space-between'}}>
           <div style={{width:'50%',display:'flex',justifyContent:'space-between'}}>
               <LikesContainer onClick={likePostHandler} style={{width:'60px',display:'flex',justifyContent:'space-between'}}>

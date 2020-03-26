@@ -2,7 +2,9 @@ import React from 'react';
 import styled from 'styled-components'
 import { BaseButton } from '../../styles/buttons'
 import { Link } from 'react-router-dom';
-import { SignupContainer, SignupText, SignupButton } from '../../styles/sign_in_up'
+import { SignupContainer } from '../../styles/sign_in_up'
+import { SignupText } from '../../styles/sign_in_up'
+import { SignupButton } from '../../styles/sign_in_up'
 
 
 const SignTopWrapper = styled.div`

@@ -2,8 +2,10 @@ import React, {useState} from 'react';
 import SignMiddle from '../Login/SignMiddle.js'
 import { LoginLayout } from '../../styles/sign_in_up'
 import LeftPanelComponent from '../LeftPanel/LeftPanelComponent'
-import { RightPanel,SigninContainer,SigninButton } from '../../styles/sign_in_up'
+import { RightPanel } from '../../styles/sign_in_up'
 import { BaseInput } from '../../styles/inputs'
+import { SigninContainer } from '../../styles/sign_in_up'
+import { SigninButton } from '../../styles/sign_in_up'
 
 
 const SignUpValidation = (props) => {

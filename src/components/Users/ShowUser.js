@@ -1,12 +1,15 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import { Button } from "../../styles/buttons"
-import { PostText, PostContainer, Avatar } from '../../styles/containers'
+import { PostText } from '../../styles/containers'
+import { PostContainer } from '../../styles/containers'
 import { Ul,Li } from '../../styles/dropdown'
 import { FollowButton, FollowButtonActive } from '../../styles/sign_in_up'
 import { fetchUserFunction } from "../../store/actions/fetchUserAction";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheck } from '@fortawesome/free-solid-svg-icons'
+import { Avatar } from '../../styles/containers'
+import { HOST_URL } from "../../constants.js"
 
 
 const ShowUser = (props) => {
@@ -17,7 +20,7 @@ const ShowUser = (props) => {
 
   const followUserHandler = (e) => {
 
-    const URL = `https://motion.propulsion-home.ch/backend/api/social/followers/toggle-follow/${props.user.id}/`;
+    const URL = `${HOST_URL}backend/api/social/toggle-follow/${props.user.id}/`;
     const headers = new Headers({
         'Content-Type': 'application/json',
         "Authorization": "Bearer " + localStorage.token
@@ -32,7 +35,7 @@ const ShowUser = (props) => {
   
     const friendRequestHandler = (e) => {
 
-      const URL = `https://motion.propulsion-home.ch/backend/api/social/friends/request/${props.user.id}/`;
+      const URL = `${HOST_URL}backend/api/social/friends/request/${props.user.id}/`;
       const headers = new Headers({
           'Content-Type': 'application/json',
           "Authorization": "Bearer " + localStorage.token
@@ -59,7 +62,8 @@ const ShowUser = (props) => {
               <FollowButton onClick={friendRequestHandler}>{ props.user.logged_in_user_sent_fr ? <FontAwesomeIcon icon={faCheck} color='grey' style={{fontSize:'15px',marginRight:'5px'}}/> : undefined } ADD FRIEND</FollowButton>
             </div>
             { props.user.about_me ? <p style={{paddingBottom:'15px',paddingTop:'15px',textAlign:'justify',overflow:'hidden',textOverflow:'ellipsis'}}>{props.user.about_me}</p> : undefined }
-            { props.user.things_user_likes.length>0 ? <Ul style={{display:'flex',justifyContent:'center',flexDirection:'row',flexWrap:'wrap',padding:'0',paddingBottom:'15px',paddingTop:'15px'}}>{ props.user.things_user_likes.map( thing => <Li style={{padding:'8px',paddingLeft:'13px',paddingRight:'13px',margin:'10px',backgroundColor:'rgb(240,240,240)',borderRadius:'30px'}}>{thing}</Li> ) }</Ul> : undefined }
+            {/* { props.user.things_user_likes.length>0 ? <Ul style={{display:'flex',justifyContent:'center',flexDirection:'row',flexWrap:'wrap',padding:'0',paddingBottom:'15px',paddingTop:'15px'}}>{ props.user.things_user_likes.map( thing => <Li style={{padding:'8px',paddingLeft:'13px',paddingRight:'13px',margin:'10px',backgroundColor:'rgb(240,240,240)',borderRadius:'30px'}}>{thing}</Li> ) }</Ul> : undefined } */}
+            { props.user.things_user_likes!==null ? <Ul style={{display:'flex',justifyContent:'center',flexDirection:'row',flexWrap:'wrap',padding:'0',paddingBottom:'15px',paddingTop:'15px'}}>{ props.user.things_user_likes.map( thing => <Li style={{padding:'8px',paddingLeft:'13px',paddingRight:'13px',margin:'10px',backgroundColor:'rgb(240,240,240)',borderRadius:'30px'}}>{thing}</Li> ) }</Ul> : undefined }
             {/* <PostText>{`Number of followers: ${props.user.amount_of_followers}`}</PostText>
             <PostText>{`Number of likes: ${props.user.amount_of_likes}`}</PostText>
             <PostText>{`Number of posts: ${props.user.amount_of_posts}`}</PostText> */}

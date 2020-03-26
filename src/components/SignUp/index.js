@@ -2,10 +2,14 @@ import React, {useState} from 'react';
 import {connect} from 'react-redux';
 import SignTop from '../Login/SignTop.js'
 import SignMiddle from '../Login/SignMiddle.js'
-import { LoginLayout,RightPanel,SigninButton,SigninContainer } from '../../styles/sign_in_up'
+import { LoginLayout } from '../../styles/sign_in_up'
+import { RightPanel } from '../../styles/sign_in_up'
+import { SigninButton } from '../../styles/sign_in_up'
 import { BaseInput } from '../../styles/inputs'
 import { registerUserFunction } from "../../store/actions/registerUserAction";
+//import { registerUserFunction } from "../../store/actions/registerUserAction";
 import LeftPanelComponent from '../LeftPanel/LeftPanelComponent'
+import { SigninContainer } from '../../styles/sign_in_up'
 
 
 const SignUp = (props) => {

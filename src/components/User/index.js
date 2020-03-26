@@ -10,6 +10,7 @@ import { Ul,Li } from '../../styles/dropdown'
 import NavBar from '../Feed/NavBar'
 import { PostContainer,LikesContainer  } from '../../styles/containers'
 import { fetchUserPostsFunction } from "../../store/actions/fetchUserPostsAction";
+import { HOST_URL } from "../../constants.js"
 
 
 
@@ -18,9 +19,8 @@ const Post = (props) => {
   const user_id = props.history.location.pathname.split('/')[2]
 
   const likePostHandler = (e) => {
-      console.log('TEST!!!!!!!!!!!!!')
       e.preventDefault();
-      const URL = `https://motion.propulsion-home.ch/backend/api/social/posts/toggle-like/${props.post_id}/`;
+      const URL = `${HOST_URL}backend/api/social/posts/toggle-like/${props.post_id}/`;
       const headers = new Headers({
           'Content-Type': 'application/json',
           "Authorization": "Bearer " + localStorage.token
@@ -33,7 +33,6 @@ const Post = (props) => {
       const apiInformation = fetch(URL, config)
           .then(res => res.json())
           .then(user => {
-              console.log('TEST!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
               props.dispatch(fetchUserPostsFunction(user_id));
               props.dispatch(fetchUserFunction(user_id));
               props.dispatch(fetchPostFunction(props.post_id));
@@ -67,7 +66,8 @@ const Post = (props) => {
           </div>
       </div>
       <p style={{paddingBottom:'20px',paddingTop:'20px',textAlign:'justify',overflow:'hidden',textOverflow:'ellipsis'}}>{props.text}</p>
-      { props.imgs.map( img => <img src={img.image} alt='Image could not be displayed' width='10%'/>) }<br/>
+      {/* { props.imgs.map( img => <img src={img.image} alt='Image could not be displayed' width='10%'/>) } */}
+      <br/>
       <div style={{width:'100%',display:'flex',justifyContent:'space-between'}}>
           <div style={{width:'50%',display:'flex',justifyContent:'space-between'}}>
               <LikesContainer onClick={ likePostHandler } style={{width:'60px',display:'flex',justifyContent:'space-between'}}>
@@ -102,7 +102,7 @@ const User = (props) => {
 
   const followUserHandler = (e) => {
 
-    const URL = `https://motion.propulsion-home.ch/backend/api/social/followers/toggle-follow/${user_id}/`;
+    const URL = `${HOST_URL}backend/api/social/toggle-follow/${user_id}/`;
     const headers = new Headers({
         'Content-Type': 'application/json',
         "Authorization": "Bearer " + localStorage.token
@@ -117,7 +117,7 @@ const User = (props) => {
   
     const friendRequestHandler = (e) => {
 
-      const URL = `https://motion.propulsion-home.ch/backend/api/social/friends/request/${props.react_user.id}/`;
+      const URL = `${HOST_URL}backend/api/social/friends/request/${props.react_user.id}/`;
       const headers = new Headers({
           'Content-Type': 'application/json',
           "Authorization": "Bearer " + localStorage.token
@@ -164,6 +164,7 @@ const User = (props) => {
                     <h1 style={{fontSize:'16px',color:'rgb(100,100,100)'}}>Posts</h1>
                   </div>
                   <div style={{display:'flex',flexDirection:'column'}}>
+                    {console.log('L!',props.react_user.amount_of_likes)}
                     <h1 style={{fontSize:'25px'}}>{props.react_user.amount_of_likes}</h1>
                     <h1 style={{fontSize:'16px',color:'rgb(100,100,100)'}}>Likes</h1>
                   </div>

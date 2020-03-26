@@ -16,8 +16,8 @@ export const LeftPanel = styled.div`
     align-items: center;
     /* background-color:lightgrey; */
     background-image: url('./assets/images/background_image.png'), linear-gradient(102deg, #c468ff 0%, #6e91f6);
-    background-repeat: no-repeat;
-    background-size: cover;
+    /* background-repeat: no-repeat; */
+    /* background-size: cover; */
     `;
 
 export const LoginRight = styled.div`

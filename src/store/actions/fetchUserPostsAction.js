@@ -1,4 +1,5 @@
 import {fetchUserPosts} from "../types";
+import { HOST_URL } from "../../constants.js"
 
 export const fetchUserPostsAction = posts => ({
     type: fetchUserPosts,
@@ -8,7 +9,7 @@ export const fetchUserPostsAction = posts => ({
 
 export const fetchUserPostsFunction = (user_id) => dispatch => {
 
-    const URL = `https://motion.propulsion-home.ch/backend/api/social/posts/user/${user_id}/`;
+    const URL = `${HOST_URL}backend/api/social/posts/user/${user_id}/`;
 
     const headers = new Headers({
         'Content-Type': 'application/json',

@@ -7,12 +7,7 @@ const logoutAction = () => {
 }
 
 export const logoutFunction = () => (dispatch) => {
+    console.log('in da logoutHandler')
     localStorage.clear();
     dispatch(logoutAction())
-};
-
-export const logoutHandler = () => {
-    dispatch(logoutFunction())
-    //props.dispatch(logoutFunction())
-    //props.history.push('/')
 };
