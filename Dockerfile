@@ -15,3 +15,6 @@ COPY package.json /frontend_tmp/
 RUN npm install
 COPY . /frontend_tmp
 RUN npm run build
+
+COPY ./scripts /scripts
+RUN chmod +x ./scripts*
