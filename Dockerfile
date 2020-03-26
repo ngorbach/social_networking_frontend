@@ -1,6 +1,8 @@
+FROM continuumio/miniconda:latest
+
 ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
 
-RUN apt-get update && apt-get nano
+RUN apt-get update && apt-get install nano
 
 RUN curl -sL https://deb.nodesource.com/setup_13.x | bash - && apt-get install -y nodejs && apt-get install -y npm
 
