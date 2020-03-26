@@ -1,0 +1,15 @@
+ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
+
+RUN apt-get update && apt-get nano
+
+RUN curl -sL https://deb.nodesource.com/setup_13.x | bash - && apt-get install -y nodejs && apt-get install -y npm
+
+RUN mkdir -p /frontend
+RUN mkdir -p /frontend_tmp
+
+WORKDIR frontend_tmp
+
+COPY ./frontend/package.json /frontend_tmp/
+RUN npm install
+COPY ./frontend /frontend_tmp
+RUN npm run build
