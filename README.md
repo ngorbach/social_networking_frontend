@@ -5,7 +5,7 @@
 
 ## Getting Started
 
-Clone this repository using `git clone git@gitlab.propulsion-home.ch:nico-stephan-gorbach/week-4.git` and navigate to the folder with `cd week-4/`.
+Clone this repository using `git clone git@gitlab.propulsion-home.ch:nico-stephan-gorbach/week-8/frontend.git` and navigate to the folder with `cd frontend/`.
 
 ## Dev
 
