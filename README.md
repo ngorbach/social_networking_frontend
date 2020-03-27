@@ -1,9 +1,7 @@
 <div align='center'>
 <img width="80" height="80" src="./public/assets/images/logo.png">
-<h1>Week 4 Motion Assignment</h1>
+<h1>Week 8 Motion Assignment - Frontend</h1>
 </div>
-
-<div align='center'>Click [here](http://nico-stephan-gorbach.pages.gitlab.propulsion-home.ch/week-4) to view the webpage.</div>
 
 ## Getting Started
 
