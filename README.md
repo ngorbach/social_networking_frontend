@@ -1,5 +1,4 @@
 <div align='center'>
-<img width="80" height="80" src="./public/assets/images/logo.png">
 <h1>Week 8 Motion Assignment - Frontend</h1>
 </div>
 
