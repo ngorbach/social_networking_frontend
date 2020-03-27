@@ -28,8 +28,11 @@ const Login = (props) => {
         <RightPanel>
             <SignTop questionText={"Don't have an account?"} buttonText="SIGN UP" path="/signup/" />
             <SigninContainer>
-                <SignMiddle title={"Sign In"} inputs={[<BaseInput placeholder='&#xf2bd;       Username' onChange={(e) => setEmail(e.currentTarget.value)}/>,<BaseInput type='password' placeholder='&#xf023;       Password' onChange={(e) => setPassword(e.currentTarget.value)}/>]}/>
-                <SigninButton onClick={userLoginHandler}>SIGN IN</SigninButton>
+                <form>
+                <SignMiddle title={"Sign In"} inputs={[<BaseInput placeholder='&#xf2bd;       Username' onChange={(e) => setEmail(e.currentTarget.value)} value='nico@email.com'/>,<BaseInput type='password' placeholder='&#xf023;       Password' onChange={(e) => setPassword(e.currentTarget.value)}/>]} value='propulsion'/>
+                {/* <SigninButton type="submit" onClick={userLoginHandler}>SIGN IN</SigninButton> */}
+                <SigninButton type="submit" onClick={userLoginHandler} value="SIGN IN"/>
+                </form>
             </SigninContainer>
         </RightPanel>
     </LoginLayout>

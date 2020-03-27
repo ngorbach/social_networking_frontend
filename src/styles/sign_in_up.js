@@ -170,7 +170,7 @@ export const PwdInput = styled.div`
     margin-top: 57.5px; 
     `;
 
-export const SigninButton = styled.div`
+export const SigninButton = styled.input`
     margin-top: 167px;
     height: 60px;
     width: 260px;

@@ -25,7 +25,6 @@ export const loginFunction = (credentials) => (dispatch) => {
     const apiInformation = fetch(URL, config)
         .then(response => response.json())
         .then(data => {
-            console.log('!!',data)
             dispatch(loginAction(data.access))
             localStorage.setItem('token', data.access)
         });

@@ -1,13 +1,10 @@
 import React, { useEffect }  from 'react';
 import {connect} from 'react-redux';
-import FollowUser from './FollowUser';
 import NavBar from '../Feed/NavBar';
 import ShowUser from './ShowUser'
 import { listUsersFunction } from "../../store/actions/listUsersAction";
-import { listFollowingFunction } from "../../store/actions/listFollowingAction";
 import { FeedContainer } from '../../styles/containers'
 import { PostsContainer } from '../../styles/containers'
-import SearchBar from '../Feed/SearchBar'
 
 const Users = (props) => {
   
