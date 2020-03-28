@@ -15,4 +15,5 @@ ReactDOM.render(
         </ThemeProvider>
     </Provider>,
 
-    document.getElementById('root'));
+    document.getElementById('root')
+);
