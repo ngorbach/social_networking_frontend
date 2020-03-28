@@ -1,28 +1,18 @@
 import React from 'react';
-import Login from '../Login/index.js';
-import Feed from '../Feed/index.js';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import HOCWrapper from '../../HOC';
-import store from "../../store";
-import { loginAction } from "../../store/actions/loginAction";
-import User from '../User/index.js'
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import App from './components/App';
+import { ThemeProvider } from 'styled-components';
+import { theme } from './styles'
+import { GlobalStyle} from './styles'
+import store from './store';
 
-// fetches the token from the localStorage and saves it in the state
-const token = localStorage.getItem('token');
-const user = localStorage.getItem('user');
-if (token) {
-  store.dispatch(loginAction(token))
-}
+ReactDOM.render(
+    <Provider store={store}>
+        <ThemeProvider theme={theme}>
+            <GlobalStyle />
+            <App />
+        </ThemeProvider>
+    </Provider>,
 
-function App() {
-  return (
-    <BrowserRouter>
-      <Switch>
-        <Route exact path="/" component={ HOCWrapper(Login) }/> 
-        <Route exact path="/feed" component={ HOCWrapper(Feed) }/>
-      </Switch>
-    </BrowserRouter>
-  );
-}
-
-export default App;
+    document.getElementById('root'));
