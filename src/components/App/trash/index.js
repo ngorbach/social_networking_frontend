@@ -1,10 +1,10 @@
 import React from 'react';
 import Login from '../Login/index.js';
 import Feed from '../Feed/index.js';
-import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import HOCWrapper from '../../HOC';
 import store from "../../store";
-import {loginAction} from "../../store/actions/loginAction";
+import { loginAction } from "../../store/actions/loginAction";
 import User from '../User/index.js'
 
 // fetches the token from the localStorage and saves it in the state
@@ -16,12 +16,12 @@ if (token) {
 
 function App() {
   return (
-    <Router>
+    <BrowserRouter>
       <Switch>
         <Route exact path="/" component={ HOCWrapper(Login) }/> 
         <Route exact path="/feed" component={ HOCWrapper(Feed) }/>
       </Switch>
-    </Router>
+    </BrowserRouter>
   );
 }
 
