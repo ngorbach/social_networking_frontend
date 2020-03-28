@@ -1,11 +1,17 @@
+// React modules
 import React from 'react';
 import ReactDOM from 'react-dom';
+
+// React-Redux modules
 import { Provider } from 'react-redux';
-import App from './components/App';
-import { ThemeProvider } from 'styled-components';
-import { theme } from './styles'
-import { GlobalStyle} from './styles'
 import store from './store';
+
+// Styled components
+import { ThemeProvider } from 'styled-components';
+import { theme, GlobalStyle } from './styles'
+
+// App module
+import App from './components/App';
 
 ReactDOM.render(
     <Provider store={store}>
